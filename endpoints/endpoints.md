@@ -10,6 +10,7 @@
 - - publishedAfter no puede ser un año superior al actual (2026)
 - - Retornar siempre los primeros 3 registros ordenados por cantidad de editions (de 
 mayor a menor)
+- - Si se llama a la api externa y se obtienen menos de 3 resultados tirar una exception
 
 Atributos del JSON recibido de la API externa que nos importan (para poder armar el json de repuesta):
 - title
@@ -35,7 +36,9 @@ JSON esperado (respuesta):
 
 ## POST /books/favorite/{key}
 
-## Entities:
+- Retornar un mensaje de respuesta q indique si se guardó correctamente el libro favorito o no.
+
+### Entities:
 - HistoryRecord:
 - - Title
 - - Author
