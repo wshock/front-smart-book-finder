@@ -12,7 +12,19 @@
 mayor a menor)
 - - Si se llama a la api externa y se obtienen menos de 3 resultados tirar una exception
 
-Atributos del JSON recibido de la API externa que nos importan (para poder armar el json de repuesta):
+## API externa urls:
+### URL para buscar libros
+- https://openlibrary.org/search.json (para buscar libro)
+- ejemplos de uso: 
+- https://openlibrary.org/search.json?title=the+lord+of+the+rings
+- https://openlibrary.org/search.json?title=the+lord+of+the+rings?author=jeje
+- https://openlibrary.org/search.json?author=jeje
+
+### URL para buscar la img del cover del libro:
+- "https://covers.openlibrary.org/b/id/{insertar acá el cover_i}-M.jpg"
+
+
+## Atributos del JSON recibido de la API externa que nos importan (para poder armar el json de repuesta):
 - title
 - author_name
 - cover_i
