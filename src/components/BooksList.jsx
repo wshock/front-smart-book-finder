@@ -17,7 +17,7 @@ export const BooksList = ({ books, loading, error, onFavorite }) => {
   return (
     <section className="results">
       {books.map((book) => (
-        <BookCard key={book.cover_i} book={book} onFavorite={onFavorite} />
+        <BookCard key={book.key} book={book} onFavorite={onFavorite} />
       ))}
     </section>
   )

@@ -13,16 +13,21 @@ export async function searchBooks({
         }
     );
     if (!response.ok) {
-        throw new Error("Error al buscar libros");
+        const errorData = await response.json();
+        throw new Error("Error al buscar libros: " + errorData.error);
     }
 
     return response.json();
 }
 
-export async function markBookAsFavorite(bookId) {
+export async function markBookAsFavorite(bookKey) {
     const response = await fetch(
-        `http://localhost:8080/api/books/favorite/${bookId}`,
-        { method: "POST" }
+        `http://localhost:8080/books/favorites`,
+        { 
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ bookKey }) 
+        }
     );
 
     if (!response.ok) {
