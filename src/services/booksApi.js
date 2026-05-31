@@ -5,7 +5,12 @@ export async function searchBooks({
     publishedAfter = ""
 }) {
     const response = await fetch(
-        `http://localhost:8080/api/books?title=${title}&author=${author}&language=${language}&publishedAfter=${publishedAfter}`
+        "http://localhost:8080/api/books",
+        {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ title, author, language, publishedAfter })
+        }
     );
 
     if (!response.ok) {

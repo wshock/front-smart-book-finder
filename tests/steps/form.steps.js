@@ -22,7 +22,7 @@ async function submitSearchWithResponse() {
 	const searchButton = page.getByRole("button", { name: /buscar/i });
 	const [response] = await Promise.all([
 		page.waitForResponse((resp) => {
-			return resp.url().includes("/api/books") && resp.request().method() === "GET";
+			return resp.url().includes("/api/books") && resp.request().method() === "POST";
 		}),
 		searchButton.click(),
 	]);
