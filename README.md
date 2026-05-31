@@ -1,14 +1,8 @@
 # Guia de ejecucion del proyecto
 
-## Requisitos
-- Node.js
-- npm
-- Java 25
-- Maven
-
 ---
 
-## Backend (Spring Boot + Maven)
+## Backend 
 
 ### 1) Compilar
 mvn clean install
@@ -21,7 +15,7 @@ http://localhost:8080
 
 ---
 
-## Frontend (Vite + React)
+## Frontend
 
 ### 1) Instalar dependencias
 npm install
