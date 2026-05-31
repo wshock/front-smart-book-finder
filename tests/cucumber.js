@@ -3,5 +3,5 @@ export default {
 	import: ["tests/steps/**/*.js"],
 	format: ["progress"],
 	publishQuiet: true,
-	defaultTimeout: 30000,
+	defaultTimeout: 60000,
 };

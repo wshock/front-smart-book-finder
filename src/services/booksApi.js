@@ -5,14 +5,13 @@ export async function searchBooks({
     publishedAfter = ""
 }) {
     const response = await fetch(
-        "http://localhost:8080/api/books",
+        "http://localhost:8080/books/search",
         {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ title, author, language, publishedAfter })
         }
     );
-
     if (!response.ok) {
         throw new Error("Error al buscar libros");
     }

@@ -203,6 +203,20 @@ h1 {
   box-shadow: 0 8px 18px rgba(31, 26, 22, 0.2);
 }
 
+.book-card__cover--missing {
+  width: 120px;
+  height: 170px;
+  border-radius: 10px;
+  border: 1px dashed var(--border);
+  display: grid;
+  place-items: center;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-muted);
+  background: rgba(255, 250, 244, 0.7);
+}
+
 .book-card__content {
   padding: 18px 18px 22px;
   display: grid;

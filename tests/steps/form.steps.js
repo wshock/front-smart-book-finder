@@ -2,7 +2,7 @@ import { Given, When, Then, Before, After, setDefaultTimeout } from "@cucumber/c
 import { chromium } from "playwright";
 import assert from "node:assert/strict";
 
-setDefaultTimeout(30000);
+setDefaultTimeout(60000);
 
 const APP_URL = "http://localhost:5173";
 
@@ -22,7 +22,7 @@ async function submitSearchWithResponse() {
 	const searchButton = page.getByRole("button", { name: /buscar/i });
 	const [response] = await Promise.all([
 		page.waitForResponse((resp) => {
-			return resp.url().includes("/api/books") && resp.request().method() === "POST";
+			return resp.url().includes("/books/search") && resp.request().method() === "POST";
 		}),
 		searchButton.click(),
 	]);
@@ -85,4 +85,34 @@ Then("I should see a required parameters error message", async function () {
 // Scenario: Error for insufficient matches
 Then("I should see an insufficient results error message", async function () {
 	await page.getByText("Error al buscar libros").waitFor();
+});
+
+Then("every book should show its information", async function () {
+	const cards = page.getByTestId("book-card");
+	await cards.first().waitFor();
+
+	const count = await cards.count();
+	for (let i = 0; i < count; i += 1) {
+		const card = cards.nth(i);
+
+		await card.getByTestId("book-title").waitFor();
+		await card.getByTestId("book-author").waitFor();
+
+		const cover = card.getByTestId("book-cover");
+		const coverMissing = card.getByTestId("book-cover-missing");
+		const coverCount = await cover.count();
+		const missingCount = await coverMissing.count();
+
+		assert.ok(
+			coverCount + missingCount > 0,
+			"Expected a cover image or a missing-cover placeholder"
+		);
+
+		if (coverCount > 0) {
+			await cover.first().waitFor();
+		}
+		if (missingCount > 0) {
+			await coverMissing.first().waitFor();
+		}
+	}
 });

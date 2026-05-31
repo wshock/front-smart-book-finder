@@ -15,6 +15,7 @@ Feature: Book search
     When I fill the form with title "The Lord of the Rings" and author "Tolkien"
     And I submit the search
     Then I should see three book cards
+    And every book should show its information
 
   Scenario: Error for required parameters
     When I submit the search without title or author

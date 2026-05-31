@@ -23,27 +23,33 @@ export const BookCard = ({ book, onFavorite }) => {
   };
 
   return (
-    <article className="book-card">
+    <article className="book-card" data-testid="book-card">
       <div className="book-card__cover">
-        <img
-          src={book.coverImageUrl}
-          alt={`${book.title} cover`}
-          loading="lazy"
-        />
+        {book.coverUrl ? (
+          <img
+            src={book.coverUrl}
+            alt={`${book.title} cover`}
+            loading="lazy"
+            data-testid="book-cover"
+          />
+        ) : (
+          <div className="book-card__cover--missing" data-testid="book-cover-missing">
+            Sin portada
+          </div>
+        )}
       </div>
       <div className="book-card__content">
-        <h3 className="book-card__title">{book.title}</h3>
+        <h3 className="book-card__title" data-testid="book-title">
+          {book.title}
+        </h3>
         <p className="book-card__meta">
-          <span>Autor:</span> {book.author}
+          <span>Autor:</span> <span data-testid="book-author">{book.author}</span>
         </p>
         <p className="book-card__meta">
-          <span>Idioma:</span> {book.language}
+          <span>Publicado:</span> {book.firstPublishYear}
         </p>
         <p className="book-card__meta">
-          <span>Publicado:</span> {new Date(book.publishedDate).toLocaleDateString()}
-        </p>
-        <p className="book-card__meta">
-          <span>Ediciones:</span> {book.edition_count}
+          <span>Ediciones:</span> {book.editionCount}
         </p>
         <div className="book-card__footer">
           <button
