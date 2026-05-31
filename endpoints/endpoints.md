@@ -25,6 +25,7 @@ mayor a menor)
 
 
 ## Atributos del JSON recibido de la API externa que nos importan (para poder armar el json de repuesta):
+- language
 - title
 - author_name
 - cover_i
@@ -36,6 +37,7 @@ JSON esperado (respuesta):
 
 [
     {
+        "key": "",
         "title": "",
         "author_name": "",
         "first_publish_year": "",

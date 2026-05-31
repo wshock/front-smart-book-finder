@@ -42,6 +42,9 @@ export const BookCard = ({ book, onFavorite }) => {
         <p className="book-card__meta">
           <span>Publicado:</span> {new Date(book.publishedDate).toLocaleDateString()}
         </p>
+        <p className="book-card__meta">
+          <span>Ediciones:</span> {book.edition_count}
+        </p>
         <div className="book-card__footer">
           <button
             className={`favorite-button${saved ? " favorite-button--saved" : ""}`}
