@@ -4,38 +4,6 @@ import { SearchForm } from "../components/SearchForm";
 import { BooksList } from "../components/BooksList";
 
 export const Home = () => {
-  const booksQuemados = [
-    {
-      title: "Cien años de soledad",
-      author: "Gabriel Garcia Marquez",
-      language: "spa",
-      publishedDate: "1967-05-30",
-      cover_i: 240727,
-      coverImageUrl: "https://covers.openlibrary.org/b/id/240727-M.jpg",
-      edition_count: 87,
-      key: "/works/OL45883W",
-    },
-    {
-      title: "The Name of the Rose",
-      author: "Umberto Eco",
-      language: "eng",
-      publishedDate: "1980-01-01",
-      cover_i: 10521213,
-      coverImageUrl: "https://covers.openlibrary.org/b/id/10521213-M.jpg",
-      edition_count: 54,
-      key: "/works/OL82563W",
-    },
-    {
-      title: "Os Lusiadas",
-      author: "Luis de Camoes",
-      language: "por",
-      publishedDate: "1572-01-01",
-      cover_i: 10909229,
-      coverImageUrl: "https://covers.openlibrary.org/b/id/10909229-M.jpg",
-      edition_count: 31,
-      key: "/works/OL98592W",
-    },
-  ];
 
   const [books, setBooks] = useState(null);
   const [error, setError] = useState("");
@@ -46,8 +14,7 @@ export const Home = () => {
       setLoading(true);
       setError("");
 
-      // const results = await searchBooks(searchParams);
-      const results = booksQuemados;
+      const results = await searchBooks(searchParams);
       setBooks(results);
     } catch (err) {
       setBooks(null);
