@@ -1,16 +1,54 @@
-# React + Vite
+# Guia de ejecucion del proyecto
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Requisitos
+- Node.js
+- npm
+- Java 25
+- Maven
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Backend (Spring Boot + Maven)
 
-## React Compiler
+### 1) Compilar
+mvn clean install
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 2) Ejecutar
+mvn spring-boot:run
 
-## Expanding the ESLint configuration
+El backend debe quedar disponible en:
+http://localhost:8080
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## Frontend (Vite + React)
+
+### 1) Instalar dependencias
+npm install
+
+### 2) Ejecutar
+npm run dev
+
+El frontend debe quedar disponible en:
+http://localhost:5173
+
+---
+
+## Pruebas E2E Frontend (Cucumber + Playwright)
+
+### 1) Asegurate de tener backend y frontend corriendo
+- Backend: mvn spring-boot:run
+- Frontend: npm run dev
+
+### 2) Ejecutar tests del front (playwright)
+npm run test:e2e
+
+### 3) Ejecutar tests del back:
+- Darle click a Run all test with coverage
+- mvn pitest:mutationCoverage
+
+---
+
+## Notas
+- Los tests E2E esperan el frontend en http://localhost:5173 y el backend en http://localhost:8080.
+- Si el backend no esta disponible, los tests que validan errores de la API fallaran.
